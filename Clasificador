@@ -17,3 +17,35 @@ condicion:-read(X), write(X).
 verdadero:- write('{'),a2.
 falso:- write('else {'),a2.
 :- jloco.
+
+
+
+nbontologia.
+nbobjeto.
+clase.
+metodo.
+asignacion.
+entrada.
+parametro.
+decision.
+entrada=clase1.
+asignacion.
+clase.
+clase1.
+asignacion.
+entrada.
+nuevaentrada.
+fin.
+decision.
+entrada=clase2.
+asignacion.
+clase.
+clase2.
+asignacion.
+entrada.
+nuevaentrada.
+fin.
+asignacion.
+clase.
+error.
+fin.
