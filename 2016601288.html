@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Balance General De Empresas.</h2>
+
+<div id="activos"></div>
+<div id="pasivos"></div>
+<div id="capital"></div>
+
+
+<script>
+var objeto = "";
+objeto = {
+    "materia":"disenio", 
+    "boleta":"2016601288", 
+    "industria":"3",
+    "age":"function() {return 30;}",
+    "balance":{
+        "activo":{
+            "infraestructura":12031,
+            "bancos":1251,
+            "insumo1":159,
+            "insumo2":108,
+            "en_proceso":648,
+            "mercancias":1075,
+            "total_a":"function(){"
+                +"var t = 0;"
+                +"for (var clave in objeto.balance.activo){"
+                    +"if (objeto.balance.activo.hasOwnProperty(clave)) {"
+                        +"t += objeto.balance.activo[clave];"
+                    +"}"
+                +"}"
+                +"return parseInt(t);"
+            +"}"
+        },
+        "pasivos":{
+            "clientes":1601,
+            "hipotecas":7441,
+            "proveedores":1583,
+            "total_b":"function(){"
+                +"var ts = 0;"
+                +"for (var clave in objeto.balance.pasivos){"
+                    +"if (objeto.balance.pasivos.hasOwnProperty(clave)) {"
+                        +"ts += objeto.balance.pasivos[clave];"
+                    +"}"
+                +"}"
+                +"return parseInt(ts);"
+            +"}"
+        },
+        "capital":{
+            "capital_social":4365,
+            "utilidades":"function(){"
+                +"var t = 0;"
+                +"for (var claveA in objeto.balance.activo){"
+                    +"if (objeto.balance.activo.hasOwnProperty(claveA)) {"
+                        +"t += objeto.balance.activo[claveA];"
+                    +"}"
+                +"}"
+                +"var ts = 0;"
+                +"for (var claveP in objeto.balance.pasivos){"
+                    +"if (objeto.balance.pasivos.hasOwnProperty(claveP)) {"
+                        +"ts += objeto.balance.pasivos[claveP];"
+                    +"}"
+                +"}"
+                +"return parseInt(t)-parseInt(ts);"
+            +"}",
+        }
+    }
+};
+/*for (var clave in objeto.balance.activo){
+  // Controlando que json realmente tenga esa propiedad
+  if (objeto.balance.activo.hasOwnProperty(clave)) {
+    // Mostrando en pantalla la clave junto a su valor
+    alert("La clave es " + clave+ " y el valor es " + objeto.balance.activo[clave]);
+  }
+}*/
+objeto.balance.activo.total_a = eval("("+ objeto.balance.activo.total_a +")");
+objeto.balance.pasivos.total_b = eval("("+ objeto.balance.pasivos.total_b +")");
+objeto.balance.capital.utilidades = eval("("+ objeto.balance.capital.utilidades +")");
+document.getElementById("activos").innerHTML = 
+    "Boleta: "+ objeto.boleta +"<br>"
+    + "<ul>"
+        +"<li> Activos"
+            +"<ul>"
+                +"<li>Infraestructura: "+ objeto.balance.activo.infraestructura + "</li>"
+                +"<li>Bancos: "+ objeto.balance.activo.bancos + "</li>"
+                +"<li>Insumo 1: "+ objeto.balance.activo.insumo1 + "</li>"
+                +"<li>Insumo 2: "+ objeto.balance.activo.insumo2 + "</li>"
+                +"<li>En proceso: "+ objeto.balance.activo.en_proceso + "</li>"
+                +"<li>Mercancias: "+ objeto.balance.activo.mercancias + "</li>" 
+                +"<li>Total: "+ objeto.balance.activo.total_a(); "</li>" 
+            +"</ul>"
+        +"</li>"
+    +"</ul>";
+document.getElementById("pasivos").innerHTML =
+"<br>"
+    + "<ul>"
+        +"<li> Pasivos"
+            +"<ul>"
+                +"<li>Clientes: "+ objeto.balance.pasivos.clientes + "</li>"
+                +"<li>Hipotecas: "+ objeto.balance.pasivos.hipotecas + "</li>"
+                +"<li>Proveedores: "+ objeto.balance.pasivos.proveedores + "</li>"
+                +"<li>Total: "+ objeto.balance.pasivos.total_b(); + "</li>"
+            +"</ul>"
+        +"</li>"
+    +"</ul>";
+document.getElementById("capital").innerHTML =
+"<br>"
+    + "<ul>"
+        +"<li> Capital"
+            +"<ul>"
+                +"<li>Capital Social: "+ objeto.balance.capital.capital_social + "</li>"
+                +"<li>Utilidades: "+ objeto.balance.capital.utilidades(); + "</li>"
+            +"</ul>"
+        +"</li>"
+    +"</ul>";
+</script>
+
+</body>
+</html>
